@@ -1,0 +1,74 @@
+
+[[init]]
+iterators = class gender;
+class = 2:6;
+gender = 1:2;
+genderNames#gender = "boys" "girl" ;
+filename = "ipva_vict_[[class]]class_[[genderNames#gender]].inp";
+outputDirectory = "A:Quant\P2 - Profiles\JIPV\results\blrt";
+[[/init]]
+
+TITLE:  ipva_vict_[[class]]class_[[genderNames#gender]];
+
+Data:
+  File is "A:Quant\P2 - Profiles\JIPV\results\vic_perp_subtypes_impact_mplus.dat";
+
+Variable:
+  Names are 
+     sex
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c v_sex2_f 
+     p_emo_co p_emo_ex p_phys p_sex 
+     imp_neg imp_neu imp_pos;
+  Missing are all (-9999) ; 
+
+  [[gender==1]]
+  usevariables = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f;
+  categorical = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f;
+  useobservations = (sex EQ 1);
+  [[/gender==1]]
+
+  [[gender==2]]
+  usevariables = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c v_sex2_f;
+  categorical = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c v_sex2_f;
+  useobservations = (sex EQ 2);
+  [[/gender==2]]  
+  
+  classes = c([[class]]);
+  
+Analysis: 
+  Type = mixture ;
+  proc = 4(starts);
+  !starts [[class]]000 [[class]]00;
+
+  k-1starts = 2500 250;
+  LRTSTARTS = 10 2 1000 200;
+  LRTBOOTSTRAP = 500;
+
+  [[gender==1]]
+    [[class==2]]OPTSEED = 193847; [[/class==2]] 
+    [[class==3]]OPTSEED = 797594; [[/class==3]] 
+    [[class==4]]OPTSEED = 729232; [[/class==4]] 
+    [[class==5]]OPTSEED = 565930; [[/class==5]] 
+    [[class==6]]OPTSEED = 270203; [[/class==6]] 
+  [[/gender==1]]
+
+  [[gender==2]]
+    [[class==2]]OPTSEED = 154044; [[/class==2]] 
+    [[class==3]]OPTSEED = 303834; [[/class==3]] 
+    [[class==4]]OPTSEED = 72450; [[/class==4]] 
+    [[class==5]]OPTSEED = 497499; [[/class==5]] 
+    [[class==6]]OPTSEED = 787994; [[/class==6]] 
+  [[/gender==2]]  
+
+  
+Output:
+  tech10 TECH11 TECH14;

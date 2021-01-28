@@ -1,0 +1,56 @@
+
+[[init]]
+iterators = class gender;
+class = 1:6;
+gender = 1:2;
+genderNames#gender = "boys" "girl" ;
+filename = "ipva_vict_[[class]]class_[[genderNames#gender]].inp";
+outputDirectory = "A:Quant\P2 - Profiles\JIPV\results\mplus";
+[[/init]]
+
+TITLE:  ipva_vict_[[class]]class_[[genderNames#gender]];
+
+Data:
+  File is "A:Quant\P2 - Profiles\JIPV\results\vic_perp_subtypes_impact_mplus.dat";
+
+Variable:
+  Names are 
+     sex
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c v_sex2_f 
+     p_emo_co p_emo_ex p_phys p_sex 
+     imp_neg imp_neu imp_pos;
+  Missing are all (-9999) ; 
+
+  [[gender==1]]
+  usevariables = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f;
+  categorical = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f;
+  useobservations = (sex EQ 1);
+  [[/gender==1]]
+
+  [[gender==2]]
+  usevariables = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c v_sex2_f;
+  categorical = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c v_sex2_f;
+  useobservations = (sex EQ 2);
+  [[/gender==2]]  
+  
+  classes = c([[class]]);
+  
+Analysis: 
+  Type = mixture ;
+  proc = 4(starts);
+  starts [[class]]000 [[class]]00;
+  
+Output:
+  tech10;
+
+
+

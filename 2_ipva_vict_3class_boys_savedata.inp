@@ -1,0 +1,42 @@
+TITLE:  ipva_vict_3class_boys;
+
+Data:
+  File is "vic_perp_subtypes_impact_mplus.dat";
+
+Variable:
+  Names are 
+     sex v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f v_sex2_c
+     v_sex2_f YPA5020 YPA5021 YPA5022 YPA5024 
+     YPA5025 YPA5028 YPA5029 p_emo_co
+     p_emo_ex p_phys p_sex imp_neg imp_neu imp_pos neg_sum;
+  Missing are all (9999) ; 
+
+  usevariables = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f;
+  categorical = 
+     v_emo_co v_emo_ex v_phys1 v_phys2 
+     v_sex1_c v_sex1_f;
+
+  useobservations = (sex EQ 1);
+  auxiliary = p_emo_co p_emo_ex p_phys p_sex neg_sum
+    YPA5020 YPA5021 YPA5022 YPA5024 YPA5025 YPA5028 YPA5029;
+  
+  classes = c(3);
+  
+Analysis: 
+  Type = mixture ;
+  proc = 4(starts);
+  starts 3000 300;
+  optseed = 173683;
+  
+Output:
+  tech10;
+
+savedata:
+file is "3class_males.txt";
+save = cprobabilities;
+
+
+
