@@ -19,7 +19,7 @@ Psychological & physical class. In women, all types of perpetration were most co
 Mainly psychological, Psychological & physical, and Multi-victimisation classes; in men, the
 Mainly psychological and Psychological & physical classes.
 
-The paper is currently at submission stage.
+The paper has been published in J Interpersonal Violence: https://journals.sagepub.com/doi/full/10.1177/08862605221087708
 
 The files are numbered in the order that they should be run. 
 1_ipva_vict_lca_diagnostics_automate.R : fits models across the 8 IPVA victimisation items for different numbers of classes (ranging from 1-6 classes; Step 1 of the 3-step LCA)
