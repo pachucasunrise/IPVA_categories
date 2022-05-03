@@ -2,6 +2,8 @@ MPlus (.INP), Stata (.do), and R (.R) code pertaining to the paper 'Categories o
 a Latent Class Analysis of psychological, physical, and sexual victimisation and perpetration in a UK birth cohort', 
 Authors: Annie Herbert, Abigail Fraser, Laura D Howe, Eszter Szilassy, Maria Barnes, Gene Feder, Christine Barter, Jon Heron
 
+*February 2021
+
 Short abstract: In the UK, around one-third of young people are exposed to IPVA by 21 years old. However,
 types of IPVA victimisation in this population (psychological, physical, sexual), and their
 relationship with impact and perpetration are poorly understood. 
@@ -18,8 +20,6 @@ impact were most common in the Psychological & sexual and Multi-victimisation cl
 Psychological & physical class. In women, all types of perpetration were most common for the 
 Mainly psychological, Psychological & physical, and Multi-victimisation classes; in men, the
 Mainly psychological and Psychological & physical classes.
-
-The paper has been published in J Interpersonal Violence: https://journals.sagepub.com/doi/full/10.1177/08862605221087708
 
 The files are numbered in the order that they should be run. 
 1_ipva_vict_lca_diagnostics_automate.R : fits models across the 8 IPVA victimisation items for different numbers of classes (ranging from 1-6 classes; Step 1 of the 3-step LCA)
@@ -38,3 +38,6 @@ Probabilities are taken from the resulting .OUT files and places in an Excel she
 9_supp_tables_S2_S3.do takes these data and puts sex, classes, and outcomes in the right order to produce Supp Tables S2 and S3.
 
 10_figs_2_3 produces the spider plot of impact outcomes (Figure 2) and dot-whisker plot of perpetration outcomes (Figure 3).
+
+*May 2022
+The paper has now been published in J Interpersonal Violence: https://journals.sagepub.com/doi/full/10.1177/08862605221087708
